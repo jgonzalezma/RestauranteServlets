@@ -13,27 +13,13 @@
 <div class="container">
 		<div class="row">
 			<div class="col">
-			<a class="btn btn-primary" href="CrearHamburguesa">Crear producto</a>
-				<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Fecha compra</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  <c:forEach items="${hamburguesas}" var="hamburguesa">
-    <tr>
-      <td>${hamburguesa.nombre}</td>
-      <td>${hamburguesa.precio}</td>
-      <td>${hamburguesa.fechaCompra}</td>
-      <td><a href="VerHamburguesa?id=${hamburguesa.id}">Ver</a>&nbsp&nbsp<a href="EditarHamburguesa?id=${hamburguesa.id}">Editar</a>&nbsp&nbsp<a href="EliminarHamburguesa?id=${hamburguesa.id}">Eliminar</a></td>
-    </tr>
-  </c:forEach>
-  </tbody>
-</table>
+				<form action="UpdateHamburguesa" method="post">
+					<input type="hidden" name="id" value="${hamburguesa.id}"/>
+					<strong>Nombre: <input type="text" name="nombre" value="${hamburguesa.nombre}"/></strong><br><br>
+					<strong>Precio: <input type="text" name="precio" value="${hamburguesa.precio}"/></strong><br><br>
+					<strong>Fecha compra: <input type="text" name="fechaCompra" value="${hamburguesa.fechaCompra}"/></strong><br><br>
+					<input class="btn btn-secondary" type="submit" value="guardar"/>
+				</form>
 			</div>
 		</div>
 	</div>

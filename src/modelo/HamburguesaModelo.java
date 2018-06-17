@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class HamburguesaModelo extends Conector{
 
 	public ArrayList<Hamburguesa> selectAll() {
@@ -22,17 +23,19 @@ public class HamburguesaModelo extends Conector{
 				hamburguesas.add(hamburguesa);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}return hamburguesas;
 	}
 
 	public Hamburguesa selectPorId(int id) {
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM hamburguesas WHERE id=?");
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM hamburguesas WHERE id = ?");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()){
 				Hamburguesa hamburguesa = new Hamburguesa();
+				hamburguesa.setId(rs.getInt("id"));
 				hamburguesa.setNombre(rs.getString("nombre"));
 				hamburguesa.setPrecio(rs.getDouble("precio"));
 				hamburguesa.setFechaCompra(rs.getDate("fecha_compra"));
@@ -54,8 +57,36 @@ public class HamburguesaModelo extends Conector{
 			pst.setInt(4, hamburguesa.getId());
 			pst.execute();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
+
+	public void delete(Hamburguesa hamburguesa) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("DELETE FROM hamburguesas WHERE id = ?");
+			pst.setInt(1, hamburguesa.getId());
+			pst.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void insert(Hamburguesa hamburguesa) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO hamburguesas (nombre, precio, fecha_compra) VALUES (?, ?, ?)");
+			pst.setString(1, hamburguesa.getNombre());
+			pst.setDouble(2, hamburguesa.getPrecio());
+			pst.setDate(3, new java.sql.Date(hamburguesa.getFechaCompra().getTime()));
+			pst.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

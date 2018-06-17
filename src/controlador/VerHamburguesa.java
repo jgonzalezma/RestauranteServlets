@@ -29,15 +29,15 @@ public class VerHamburguesa extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// poner la id que recibimos
+		// recoger la id
 		int id = Integer.parseInt(request.getParameter("id"));
 		// llamar al modelo
 		HamburguesaModelo hamburguesaModelo = new HamburguesaModelo();
-		// hacer un selectPorId
+		// selectPorId del modelo
 		Hamburguesa hamburguesa = hamburguesaModelo.selectPorId(id);
-		// guardar en request
+		// guardar en el request
 		request.setAttribute("hamburguesa", hamburguesa);
-		// enviarlo a la vista
-		request.getRequestDispatcher("mostrarHamburguesa.jsp").forward(request, response);
+		// enviar a la vista
+		request.getRequestDispatcher("verHamburguesa.jsp").forward(request, response);
 	}
 }

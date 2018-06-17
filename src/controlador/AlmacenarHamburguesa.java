@@ -15,35 +15,32 @@ import modelo.Hamburguesa;
 import modelo.HamburguesaModelo;
 
 /**
- * Servlet implementation class UpdateHamburguesa
+ * Servlet implementation class AlmacenarHamburguesa
  */
-@WebServlet("/UpdateHamburguesa")
-public class UpdateHamburguesa extends HttpServlet {
+@WebServlet("/AlmacenarHamburguesa")
+public class AlmacenarHamburguesa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateHamburguesa() {
+    public AlmacenarHamburguesa() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			// recoger parametros
-			int id = Integer.parseInt(request.getParameter("id"));
+			// recoger todos los parametros
 			String nombre = request.getParameter("nombre");
 			Double precio = Double.parseDouble(request.getParameter("precio"));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date fechaCompra = sdf.parse(request.getParameter("fechaCompra"));
 			
-			// crear hamburguesa con esos parametros
+			// crear la hamburguesa
 			Hamburguesa hamburguesa = new Hamburguesa();
-			hamburguesa.setId(id);
 			hamburguesa.setNombre(nombre);
 			hamburguesa.setPrecio(precio);
 			hamburguesa.setFechaCompra(fechaCompra);
@@ -51,16 +48,17 @@ public class UpdateHamburguesa extends HttpServlet {
 			// llamar al modelo
 			HamburguesaModelo hamburguesaModelo = new HamburguesaModelo();
 			
-			// hacer el update
-			hamburguesaModelo.update(hamburguesa);
+			// hacer el insert
+			hamburguesaModelo.insert(hamburguesa);
 			
-			//volver a la vista de VerHamburguesa
+			// ir al Inicio para ver que esta creado
 			response.sendRedirect("Inicio");
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }

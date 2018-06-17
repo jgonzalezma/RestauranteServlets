@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inicio</title>
+<title>Ver</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,27 +13,23 @@
 <div class="container">
 		<div class="row">
 			<div class="col">
-			<a class="btn btn-primary" href="CrearHamburguesa">Crear producto</a>
 				<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Fecha compra</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  <c:forEach items="${hamburguesas}" var="hamburguesa">
-    <tr>
-      <td>${hamburguesa.nombre}</td>
-      <td>${hamburguesa.precio}</td>
-      <td>${hamburguesa.fechaCompra}</td>
-      <td><a href="VerHamburguesa?id=${hamburguesa.id}">Ver</a>&nbsp&nbsp<a href="EditarHamburguesa?id=${hamburguesa.id}">Editar</a>&nbsp&nbsp<a href="EliminarHamburguesa?id=${hamburguesa.id}">Eliminar</a></td>
-    </tr>
-  </c:forEach>
-  </tbody>
-</table>
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">Nombre</th>
+					      <th scope="col">Precio</th>
+					      <th scope="col">Fecha compra</th>
+					      <th scope="col">Opciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>${hamburguesa.nombre}</td>
+					      <td>${hamburguesa.precio}</td>
+					      <td>${hamburguesa.fechaCompra}</td>
+					    </tr>
+					  </tbody>
+					</table>
 			</div>
 		</div>
 	</div>

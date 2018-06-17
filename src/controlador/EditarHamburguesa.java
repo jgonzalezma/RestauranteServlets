@@ -29,15 +29,14 @@ public class EditarHamburguesa extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// recibir el id
+		// recoger la id
 		int id = Integer.parseInt(request.getParameter("id"));
-		// llamar al modelo
+		// selectPorId para editar ese en concreto
 		HamburguesaModelo hamburguesaModelo = new HamburguesaModelo();
-		// seleccionarlo con el selectPorId
 		Hamburguesa hamburguesa = hamburguesaModelo.selectPorId(id);
-		// hacer el request
+		// guardar en el request
 		request.setAttribute("hamburguesa", hamburguesa);
-		// enviar a la vista, al form
-		request.getRequestDispatcher("formularioEditar.jsp").forward(request, response);
+		// enviar al form
+		request.getRequestDispatcher("formEditar.jsp").forward(request, response);
 	}
 }

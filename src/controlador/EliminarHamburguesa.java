@@ -1,8 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import modelo.Hamburguesa;
 import modelo.HamburguesaModelo;
 
 /**
- * Servlet implementation class Inicio
+ * Servlet implementation class EliminarHamburguesa
  */
-@WebServlet("/Inicio")
-public class Inicio extends HttpServlet {
+@WebServlet("/EliminarHamburguesa")
+public class EliminarHamburguesa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Inicio() {
+    public EliminarHamburguesa() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +29,23 @@ public class Inicio extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// coger HamburguesaModelo
+		// conseguir la id
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		// llamar al modelo
 		HamburguesaModelo hamburguesaModelo = new HamburguesaModelo();
-		// hacer el selectAll
-		ArrayList<Hamburguesa> hamburguesas = hamburguesaModelo.selectAll();
-		// guardarlo en el request
-		request.setAttribute("hamburguesas", hamburguesas);
-		// enviarlo a la vista
-		request.getRequestDispatcher("inicio.jsp").forward(request, response);
+		
+		// hacer selectPorId para mostrar la informacion de lo que eliminamos
+		Hamburguesa hamburguesa = hamburguesaModelo.selectPorId(id);
+		
+		// hacer el delete
+		hamburguesaModelo.delete(hamburguesa);
+		
+		// guardar en el request
+		request.setAttribute("hamburguesa", hamburguesa);
+		
+		// enviar a la vista
+		request.getRequestDispatcher("infoEliminado.jsp").forward(request, response);
+		
 	}
 }

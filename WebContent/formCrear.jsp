@@ -13,12 +13,11 @@
 <div class="container">
 		<div class="row">
 			<div class="col">
-				<form action="UpdateHamburguesa" method="post">
-				<input type="hidden" name="id" value="${hamburguesa.id}"/>
-				Nombre:<input type="text" name="nombre" value="${hamburguesa.nombre}"/><br><br>
-				Precio:<input type="number" name="precio" value="${hamburguesa.precio}"/><br><br>
-				Fecha de compra:<input type="date" name="fechaCompra" value="${hamburguesa.fechaCompra}"/><br><br>
-				<input class="btn btn-primary" type="submit" value="Guardar"/>
+				<form action="AlmacenarHamburguesa" method="post">
+					<strong>Nombre: <input type="text" name="nombre"/></strong><br><br>
+					<strong>Precio: <input type="text" name="precio"/></strong><br><br>
+					<strong>Fecha compra: <input type="text" name="fechaCompra" placeholder="yyyy-MM-dd"/></strong><br><br>
+					<input class="btn btn-secondary" type="submit" value="guardar"/>
 				</form>
 			</div>
 		</div>

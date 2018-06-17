@@ -13,22 +13,10 @@
 <div class="container">
 		<div class="row">
 			<div class="col">
-				<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Fecha de compra</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>${hamburguesa.nombre}</td>
-      <td>${hamburguesa.precio}</td>
-      <td>${hamburguesa.fechaCompra}</td>
-    </tr>
-  </tbody>
-</table>
+			Nombre: ${hamburguesa.nombre}<br><br>
+			Precio: ${hamburguesa.precio}<br><br>
+			Fecha compra: ${hamburguesa.fechaCompra}<br><br>
+			<h2>La hamburguesa ${hamburguesa.nombre} ha sido eliminada</h2>
 			</div>
 		</div>
 	</div>
